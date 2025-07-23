@@ -1,6 +1,41 @@
-﻿namespace SaleProject.DataAccess
+﻿using SaleProject.Entities;
+
+
+namespace SaleProject.DataAccess
 {
-    public class ApplicationDbContext
+    
+
+
+public class ApplicationDbContext : DbContext
     {
+        // The constructor that receives the configuration options from the application's setup
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+        }
+
+        // Create a DbSet for each entity. Each DbSet corresponds to a table in your database.
+        public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Store> Stores { get; set; }
+        public DbSet<SaleInvoice> SaleInvoices { get; set; }
+        public DbSet<SaleInvoiceDetail> SaleInvoiceDetails { get; set; }
+        public DbSet<BuyInvoice> BuyInvoices { get; set; }
+        public DbSet<BuyInvoiceDetail> BuyInvoiceDetails { get; set; }
+        public DbSet<StoreProduct> StoreProducts { get; set; }
+
+
+        // many to many relationship between Store and Product
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+
+
+            modelBuilder.Entity<StoreProduct>()
+                .HasKey(sp => new { sp.StoreId, sp.ProductId });
+        }
+   
     }
 }

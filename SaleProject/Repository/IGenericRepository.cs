@@ -1,4 +1,4 @@
-﻿// In Repositories/IGenericRepository.cs
+﻿
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,8 +12,7 @@ namespace SaleProject.Repository
     Task AddAsync(T entity);
     void Update(T entity);
     void Delete(T entity);
-    Task<int> SaveChangesAsync(); // To commit the transaction
-}
+    Task<int> SaveChangesAsync(); 
 
 
 
