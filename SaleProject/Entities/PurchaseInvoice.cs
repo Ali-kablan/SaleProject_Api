@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class BuyInvoice
+    public class PurchaseInvoice
     {
         public int Id { get; set; } // Primary Key
         public DateTime InvoiceDate { get; set; }
@@ -14,6 +14,6 @@
         public virtual Supplier Supplier { get; set; } // Navigation property to the single supplier
 
         // Navigation property to the details of this invoice
-        public virtual ICollection<BuyInvoiceDetail> BuyInvoiceDetails { get; set; }
+        public  virtual ICollection<PurchaseInvoiceProducts>? PurchaseInvoiceProductss { get; set; }
     }
 }

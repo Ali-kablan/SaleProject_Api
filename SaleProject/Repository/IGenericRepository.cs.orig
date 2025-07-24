@@ -1,0 +1,33 @@
+<<<<<<< HEAD
+﻿
+=======
+﻿// In Repositories/IGenericRepository.cs
+>>>>>>> TestVersion2
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+
+namespace SaleProject.Repository
+{
+    public interface IGenericRepository<T> where T : class
+{
+<<<<<<< HEAD
+    Task<T> GetByIdAsync(int id);
+=======
+    Task<T> GetByIdAsync(string id);
+>>>>>>> TestVersion2
+    Task<IEnumerable<T>> GetAllAsync();
+    Task AddAsync(T entity);
+    void Update(T entity);
+    void Delete(T entity);
+<<<<<<< HEAD
+    Task<int> SaveChangesAsync(); 
+=======
+    Task<int> SaveChangesAsync(); // To commit the transaction
+}
+>>>>>>> TestVersion2
+
+
+
+
+}

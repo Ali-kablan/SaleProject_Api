@@ -6,6 +6,6 @@
         public DateTime InvoiceDate { get; set; }
         public decimal TotalAmount { get; set; }
         public string CustomerName { get; set; } // Flattened data
-        public ICollection<SaleInvoiceDetailDto> Details { get; set; }
+        public ICollection<SaleInvoiceProductsDto> Details { get; set; }
     }
 }

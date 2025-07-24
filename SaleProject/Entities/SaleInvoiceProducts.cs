@@ -1,6 +1,6 @@
 ﻿namespace SaleProject.Entities
 {
-    public class SaleInvoiceDetail
+    public class SaleInvoiceProducts
     {
         public int Id { get; set; } // Primary Key for this line item
 

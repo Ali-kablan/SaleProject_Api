@@ -9,8 +9,8 @@
         public decimal BuyPrice { get; set; }  // Price you buy at
 
         // Navigation Properties for many-to-many relationships
-        public ICollection<StoreProduct> StoreProducts { get; set; }
-        public ICollection<SaleInvoiceDetail> SaleInvoiceDetails { get; set; }
-        public ICollection<BuyInvoiceDetail> BuyInvoiceDetails { get; set; }
+        public ICollection<StoreStock> StoreStocks { get; set; }
+        public ICollection<SaleInvoiceProducts> SaleInvoiceProductss { get; set; }
+        public ICollection<PurchaseInvoiceProducts> PurchaseInvoiceProductss { get; set; }
     }
 }

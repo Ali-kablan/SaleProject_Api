@@ -2,12 +2,14 @@
 {
     using System.Collections.Generic;
 
-    public class Supplier 
+    public class Supplier
     {
-
         public string Id { get; set; } = Guid.CreateVersion7().ToString();
+        public string? Name { get; set; }
+        public string? ContactPerson { get; set; }
+        public string? Email { get; set; }
+
         // Navigation Property: A Supplier can have many PurchaseInvoices
         public required virtual ICollection<PurchaseInvoice> PurchaseInvoices { get; set; }
-        public required virtual ICollection<ContactInfo> ContactInfo { get; set; }
     }
 }
