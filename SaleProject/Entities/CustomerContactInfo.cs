@@ -12,7 +12,7 @@ namespace SaleProject.Entities
         public string? Email { get; set; }
         public string? City { get; set; }
        
-        //
+       
    
     }
 }
