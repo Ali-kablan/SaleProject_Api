@@ -10,6 +10,6 @@
         public string? Email { get; set; }
 
         // Navigation Property: A Supplier can have many BuyInvoices
-        public ICollection<BuyInvoice> BuyInvoices { get; set; }
+        public required virtual ICollection<BuyInvoice> BuyInvoices { get; set; }
     }
 }

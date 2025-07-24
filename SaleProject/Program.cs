@@ -14,7 +14,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 // 2. Add the DbContext to the services container
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString) // 3. Specify that we are using PostgreSQL
-);
+);  
 
 
 //-----------------------------------------me---------------------------------------------//

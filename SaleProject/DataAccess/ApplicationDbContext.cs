@@ -1,17 +1,14 @@
-﻿using SaleProject.Entities;
-
+﻿using Microsoft.EntityFrameworkCore;
+using SaleProject.Entities;
 
 namespace SaleProject.DataAccess
 {
-    
-
-
-public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
         // The constructor that receives the configuration options from the application's setup
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-        }
+        }                                                                                                                                                                                                                                                                                                                              
 
         // Create a DbSet for each entity. Each DbSet corresponds to a table in your database.
         public DbSet<User> Users { get; set; }
@@ -26,16 +23,16 @@ public class ApplicationDbContext : DbContext
         public DbSet<StoreProduct> StoreProducts { get; set; }
 
 
-        // many to many relationship between Store and Product
+        // This method is used for more advanced configuration
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-
+            // Here we configure the "many-to-many" join tables by defining their composite primary keys.
+            // This tells EF Core that the primary key of StoreProduct is the combination of StoreId and ProductId.
 
             modelBuilder.Entity<StoreProduct>()
                 .HasKey(sp => new { sp.StoreId, sp.ProductId });
         }
-   
     }
 }

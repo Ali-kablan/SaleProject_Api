@@ -11,9 +11,9 @@
 
         // Foreign Key to Supplier
         public int SupplierId { get; set; }
-        public Supplier Supplier { get; set; } // Navigation property to the single supplier
+        public virtual Supplier Supplier { get; set; } // Navigation property to the single supplier
 
         // Navigation property to the details of this invoice
-        public ICollection<BuyInvoiceDetail> BuyInvoiceDetails { get; set; }
+        public virtual ICollection<BuyInvoiceDetail> BuyInvoiceDetails { get; set; }
     }
 }
