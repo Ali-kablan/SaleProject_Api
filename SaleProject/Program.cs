@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using SaleProject.DataAccess;
+using SaleProject.Repository;
+using SaleProject.Services.Customer;
+using SaleProject.Services.Product;
+using SaleProject.Services.Supplier;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,11 +18,32 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 // 2. Add the DbContext to the services container
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString) // 3. Specify that we are using PostgreSQL
-);  
+);
 
 
 //-----------------------------------------me---------------------------------------------//
 
+// 3. --- REGISTER YOUR REPOSITORIES AND SERVICES HERE ---
+// AddScoped means a new instance is created for each web request.
+
+// Register the Generic Repository
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+
+// Register specific repositories
+
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
+
+
+
+// Register your specific services (repeat for each service)
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ISupplierService, SupplierService>();
+// builder.Services.AddScoped<ICustomerService, CustomerService>(); // Add these as you create them
+// builder.Services.AddScoped<ISaleInvoiceService, SaleInvoiceService>(); // Add these as you create them
+// ... and so on for all your services
 
 
 

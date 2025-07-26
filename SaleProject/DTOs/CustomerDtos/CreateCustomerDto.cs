@@ -1,10 +1,10 @@
-﻿namespace SaleProject.DTOs.Customer_DTOs
+﻿using SaleProject.DTOs.CustomerDtos;
+
+namespace SaleProject.DTOs.Customer_DTOs
 {
     public class CreateCustomerDto
     {
+        public CustomerContactInfoDto ContactInfo { get; set; }
 
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
     }
 }

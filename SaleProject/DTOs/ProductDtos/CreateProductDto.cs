@@ -1,4 +1,4 @@
-﻿namespace SaleProject.DTOs.Product_DTOs
+﻿namespace SaleProject.DTOs.ProductDtos
 {
     public class CreateProductDto
     {

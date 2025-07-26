@@ -1,4 +1,4 @@
-﻿using SaleProject.DTOs.Product_DTOs;
+﻿using SaleProject.DTOs.ProductDtos;
 using SaleProject.Repository;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,10 +7,10 @@ namespace SaleProject.Services.Product
 {
     public class ProductService : IProductService
     {
-        private readonly IGenericRepository<Product> _productRepository;
+        private readonly IGenericRepository<SaleProject.Entities.Product> _productRepository;
 
         // We inject the generic repository for the Product entity
-        public ProductService(IGenericRepository<Product> productRepository)
+        public ProductService(IGenericRepository<SaleProject.Entities.Product> productRepository)
         {
             _productRepository = productRepository;
         }
@@ -33,7 +33,7 @@ namespace SaleProject.Services.Product
             return productDtos;
         }
 
-        public async Task<ProductDto> GetProductByIdAsync(int id)
+        public async Task<ProductDto> GetProductByIdAsync(string id)
         {
             var product = await _productRepository.GetByIdAsync(id);
             if (product == null) return null;
@@ -50,7 +50,7 @@ namespace SaleProject.Services.Product
         public async Task<ProductDto> CreateProductAsync(CreateProductDto createProductDto)
         {
             // Map DTO to Entity
-            var product = new Product
+            var product = new SaleProject.Entities.Product
             {
                 Name = createProductDto.Name,
                 Description = createProductDto.Description,
@@ -71,7 +71,7 @@ namespace SaleProject.Services.Product
             };
         }
 
-        public async Task<bool> UpdateProductAsync(int id, CreateProductDto createProductDto)
+        public async Task<bool> UpdateProductAsync(string id, CreateProductDto createProductDto)
         {
             var product = await _productRepository.GetByIdAsync(id);
             if (product == null) return false; // Product not found
@@ -87,7 +87,7 @@ namespace SaleProject.Services.Product
             return true;
         }
 
-        public async Task<bool> DeleteProductAsync(int id)
+        public async Task<bool> DeleteProductAsync(string id)
         {
             var product = await _productRepository.GetByIdAsync(id);
             if (product == null) return false; // Product not found

@@ -2,12 +2,11 @@
 {
     public class Customer
     {
-        public string Id { get; set; }  = Guid.CreateVersion7().ToString();
-        public string? Name { get; set; }
-        public string? Address { get; set; }
-        public string? Phone { get; set; }
+        public string? Id { get; set; }
 
-        // Navigation Property: A Customer can have many SaleInvoices
-        public ICollection<SaleInvoice> SaleInvoices { get; set; }
+        // Navigation property to its dedicated contact info
+        public virtual CustomerContactInfo ContactInfo { get; set; }
+
+        public virtual ICollection<SaleInvoice> SaleInvoices { get; set; }
     }
 }

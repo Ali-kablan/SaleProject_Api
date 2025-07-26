@@ -21,12 +21,27 @@ namespace SaleProject.DataAccess
         public DbSet<PurchaseInvoice> PurchaseInvoices { get; set; }
         public DbSet<PurchaseInvoiceProducts> PurchaseInvoiceProductss { get; set; }
         public DbSet<StoreStock> StoreStocks { get; set; }
-
+        // --- Add the new DbSets ---
+        public DbSet<CustomerContactInfo> CustomerContactInfos { get; set; }
+        public DbSet<SupplierContactInfo> SupplierContactInfos { get; set; }
 
         // This method is used for more advanced configuration
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+
+
+            // this represent the one to one relationship between Supplier and  SupplierContactInfo
+            modelBuilder.Entity<Customer>()
+           .HasOne(c => c.ContactInfo)
+           .WithOne(ci => ci.Customer)
+            .HasForeignKey<CustomerContactInfo>(ci => ci.CustomerId);
+
+            modelBuilder.Entity<Supplier>()
+            .HasOne(s => s.ContactInfo)
+            .WithOne(si => si.Supplier)
+             .HasForeignKey<SupplierContactInfo>(si => si.SupplierId);
 
             // Here we configure the "many-to-many" join tables by defining their composite primary keys.
             // This tells EF Core that the primary key of StoreStock is the combination of StoreId and ProductId.
