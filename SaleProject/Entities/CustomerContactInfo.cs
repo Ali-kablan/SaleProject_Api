@@ -12,7 +12,7 @@ namespace SaleProject.Entities
         public string? City { get; set; }
 
         // Foreign Key and Navigation Property back to the Customer
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
         public virtual Customer Customer { get; set; }
      //  الي اديره في ال customer  دير زيه في ال   supplier 
     }

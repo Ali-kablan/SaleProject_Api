@@ -11,7 +11,7 @@
 
 
         // Foreign Key and Navigation Property back to the Supplier
-        public int SupplierId { get; set; }
+        public string SupplierId { get; set; }
         public virtual Supplier Supplier { get; set; }
     }
 }

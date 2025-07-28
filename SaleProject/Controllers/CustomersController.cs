@@ -56,7 +56,7 @@ namespace SaleProject.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("deletCustomer/{id}")]
         public async Task<IActionResult> DeleteCustomer(string id)
         {
             var result = await _customerService.DeleteCustomerAsync(id);

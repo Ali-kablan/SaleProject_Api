@@ -21,7 +21,7 @@ namespace SaleProject.Controllers
             _supplierService = supplierService;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllSupplier")]
         public async Task<ActionResult<IEnumerable<SupplierDto>>> GetAllSuppliers()
         {
             return Ok(await _supplierService.GetAllSuppliersAsync());

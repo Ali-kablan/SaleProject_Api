@@ -49,7 +49,10 @@ namespace SaleProject.Services.Supplier
                     ContactInfo = new SupplierContactInfoDto
                     {
                         FirstName = Supplier.ContactInfo.FirstName,
-                        // ... map other properties ...
+                        LastName = Supplier.ContactInfo.LastName,
+                        Email = Supplier.ContactInfo.Email,
+                        Phone = Supplier.ContactInfo.Phone,
+                        City = Supplier.ContactInfo.City
                     }
                 });
             }
