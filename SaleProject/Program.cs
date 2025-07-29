@@ -51,15 +51,44 @@ builder.Services.AddScoped<ISupplierService, SupplierService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+
+
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    // This is optional, but it gives your Swagger page a nicer title and version.
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "SaleDB API",
+        Version = "v1",
+        Description = "API for managing sales, customers, and suppliers."
+    });
+});
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        // This tells the UI where to find the JSON file. The default is usually correct.
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "SaleDB API V1");
+        // This makes the Swagger page the default page when you run the app.
+        options.RoutePrefix = string.Empty;
+    });
 }
+
+// this is commented out because it requires additional setup for OpenAPI/Swagger
+//builder.Services.AddOpenApi();
+
+//var app = builder.Build();
+
+//// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+//    app.MapOpenApi();
+//}
 
 app.UseHttpsRedirection();
 

@@ -190,7 +190,7 @@ namespace SaleProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SaleInvoiceProductss",
+                name: "SaleInvoiceProduct",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -203,15 +203,15 @@ namespace SaleProject.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SaleInvoiceProductss", x => x.Id);
+                    table.PrimaryKey("PK_SaleInvoiceProduct", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SaleInvoiceProductss_Products_ProductId1",
+                        name: "FK_SaleInvoiceProduct_Products_ProductId1",
                         column: x => x.ProductId1,
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SaleInvoiceProductss_SaleInvoices_SaleInvoiceId",
+                        name: "FK_SaleInvoiceProduct_SaleInvoices_SaleInvoiceId",
                         column: x => x.SaleInvoiceId,
                         principalTable: "SaleInvoices",
                         principalColumn: "Id",
@@ -219,7 +219,7 @@ namespace SaleProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PurchaseInvoiceProductss",
+                name: "PurchaseInvoiceProduct",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
@@ -231,15 +231,15 @@ namespace SaleProject.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PurchaseInvoiceProductss", x => x.Id);
+                    table.PrimaryKey("PK_PurchaseInvoiceProduct", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PurchaseInvoiceProductss_Products_ProductId1",
+                        name: "FK_PurchaseInvoiceProduct_Products_ProductId1",
                         column: x => x.ProductId1,
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PurchaseInvoiceProductss_PurchaseInvoices_PurchaseInvoiceId",
+                        name: "FK_PurchaseInvoiceProduct_PurchaseInvoices_PurchaseInvoiceId",
                         column: x => x.PurchaseInvoiceId,
                         principalTable: "PurchaseInvoices",
                         principalColumn: "Id",
@@ -253,13 +253,13 @@ namespace SaleProject.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_PurchaseInvoiceProductss_ProductId1",
-                table: "PurchaseInvoiceProductss",
+                name: "IX_PurchaseInvoiceProduct_ProductId1",
+                table: "PurchaseInvoiceProduct",
                 column: "ProductId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PurchaseInvoiceProductss_PurchaseInvoiceId",
-                table: "PurchaseInvoiceProductss",
+                name: "IX_PurchaseInvoiceProduct_PurchaseInvoiceId",
+                table: "PurchaseInvoiceProduct",
                 column: "PurchaseInvoiceId");
 
             migrationBuilder.CreateIndex(
@@ -268,13 +268,13 @@ namespace SaleProject.Migrations
                 column: "SupplierId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SaleInvoiceProductss_ProductId1",
-                table: "SaleInvoiceProductss",
+                name: "IX_SaleInvoiceProduct_ProductId1",
+                table: "SaleInvoiceProduct",
                 column: "ProductId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SaleInvoiceProductss_SaleInvoiceId",
-                table: "SaleInvoiceProductss",
+                name: "IX_SaleInvoiceProduct_SaleInvoiceId",
+                table: "SaleInvoiceProduct",
                 column: "SaleInvoiceId");
 
             migrationBuilder.CreateIndex(
@@ -301,10 +301,10 @@ namespace SaleProject.Migrations
                 name: "CustomerContactInfos");
 
             migrationBuilder.DropTable(
-                name: "PurchaseInvoiceProductss");
+                name: "PurchaseInvoiceProduct");
 
             migrationBuilder.DropTable(
-                name: "SaleInvoiceProductss");
+                name: "SaleInvoiceProduct");
 
             migrationBuilder.DropTable(
                 name: "StoreStocks");

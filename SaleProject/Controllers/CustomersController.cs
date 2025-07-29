@@ -23,47 +23,50 @@ namespace SaleProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CustomerDto>>> GetAllCustomers()
         {
-            var customers = await _customerService.GetAllCustomersAsync();
-            return Ok(customers);
+            //var customers = await _customerService.GetAllCustomersAsync();
+            //return Ok(customers);
+            return NoContent(); // Placeholder for actual implementation
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<CustomerDto>> GetCustomerById(string id)
         {
-            var customer = await _customerService.GetCustomerByIdAsync(id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
-            return Ok(customer);
+            //var customer = await _customerService.GetCustomerByIdAsync(id);
+            //if (customer == null)
+            //{
+            //    return NotFound();
+            //}
+         //   return Ok(customer);
+         return NoContent(); // Placeholder for actual implementation
         }
 
         [HttpPost]
         public async Task<ActionResult<CustomerDto>> CreateCustomer(CreateCustomerDto createCustomerDto)
         {
-            var newCustomer = await _customerService.CreateCustomerAsync(createCustomerDto);
-            return CreatedAtAction(nameof(GetCustomerById), new { id = newCustomer.Id }, newCustomer);
+            //var newCustomer = await _customerService.CreateCustomerAsync(createCustomerDto);
+            return NoContent();
+            //return CreatedAtAction(nameof(GetCustomerById), new { id = newCustomer.Id }, newCustomer);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCustomer(string id, CreateCustomerDto createCustomerDto)
         {
-            var result = await _customerService.UpdateCustomerAsync(id, createCustomerDto);
-            if (!result)
-            {
-                return NotFound();
-            }
+            //var result = await _customerService.UpdateCustomerAsync(id, createCustomerDto);
+            //if (!result)
+            //{
+            //    return NotFound();
+            //}
             return NoContent();
         }
 
         [HttpDelete("deletCustomer/{id}")]
         public async Task<IActionResult> DeleteCustomer(string id)
         {
-            var result = await _customerService.DeleteCustomerAsync(id);
-            if (!result)
-            {
-                return NotFound();
-            }
+            //var result = await _customerService.DeleteCustomerAsync(id);
+            //if (!result)
+            //{
+            //    return NotFound();
+            //}
             return NoContent();
         }
     }

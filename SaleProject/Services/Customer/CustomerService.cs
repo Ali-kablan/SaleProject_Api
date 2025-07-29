@@ -26,72 +26,75 @@ namespace SaleProject.Services.Customer
             return new CustomerDto
             {
                 Id = customer.Id,
-                ContactInfo = new CustomerContactInfoDto
+                ContactInfo = customer.ContactInfo.Where(c => c.Id == id).Select(c => new CustomerContactInfoDto
                 {
-                    FirstName = customer.ContactInfo.FirstName,
-                    LastName = customer.ContactInfo.LastName,
-                    Email = customer.ContactInfo.Email,
-                    Phone = customer.ContactInfo.Phone,
-                    City = customer.ContactInfo.City
-                }
+                    FirstName = c.FirstName,
+                    LastName = c.LastName,
+                    Email = c.Email,
+                    Phone = c.Phone,
+                    City = c.City
+                }).ToArray() // Assuming you want the first contact info for the customer
             };
         }
 
-        public async Task<IEnumerable<CustomerDto>> GetAllCustomersAsync()
-        {
-            var customers = await _customerRepository.GetAllWithContactAsync();
-            var dtos = new List<CustomerDto>();
-            foreach (var customer in customers)
-            {
-                dtos.Add(new CustomerDto
-                {
-                    Id = customer.Id,
-                    ContactInfo = new CustomerContactInfoDto
-                    {
-                        FirstName = customer.ContactInfo.FirstName,
-                        // ... map other properties ...
-                    }
-                });
-            }
-            return dtos;
-        }
+        //public async Task<IEnumerable<CustomerDto>> GetAllCustomersAsync()
+        //{
+        //    var customers = await _customerRepository.GetAllWithContactAsync();
+        //    var dtos = new List<CustomerDto>();
+        //    foreach (var customer in customers)
+        //    {
+        //        dtos.Add(new CustomerDto
+        //        {
+        //            Id = customer.Id,
+        //            ContactInfo = customer.ContactInfo.Where(c => c.Id == id).Select(c => new CustomerContactInfoDto
+        //            {
+        //                FirstName = c.FirstName,
+        //                LastName = c.LastName,
+        //                Email = c.Email,
+        //                Phone = c.Phone,
+        //                City = c.City
+        //            }).ToArray()
+        //        });
+        //    }
+        //    return dtos;
+        //}
 
-        public async Task<CustomerDto> CreateCustomerAsync(CreateCustomerDto createCustomerDto)
-        {
-            var customer = new  SaleProject.Entities.Customer
-            {
-                ContactInfo = new CustomerContactInfo // Create the nested object
-                {
-                    FirstName = createCustomerDto.ContactInfo.FirstName,
-                    LastName = createCustomerDto.ContactInfo.LastName,
-                    Email = createCustomerDto.ContactInfo.Email,
-                    Phone = createCustomerDto.ContactInfo.Phone,
-                    City = createCustomerDto.ContactInfo.City
-                }
-            };
+        //public async Task<CustomerDto> CreateCustomerAsync(CreateCustomerDto createCustomerDto)
+        //{
+        //    var customer = new  SaleProject.Entities.Customer
+        //    {
+        //        ContactInfo = new CustomerContactInfo // Create the nested object
+        //        {
+        //            FirstName = createCustomerDto.ContactInfo.FirstName,
+        //            LastName = createCustomerDto.ContactInfo.LastName,
+        //            Email = createCustomerDto.ContactInfo.Email,
+        //            Phone = createCustomerDto.ContactInfo.Phone,
+        //            City = createCustomerDto.ContactInfo.City
+        //        }
+        //    };
 
-            await _customerRepository.AddAsync(customer);
-            await _customerRepository.SaveChangesAsync();
+        //    await _customerRepository.AddAsync(customer);
+        //    await _customerRepository.SaveChangesAsync();
 
-            return await GetCustomerByIdAsync(customer.Id); // Reuse get method to return full DTO
-        }
+        //    return await GetCustomerByIdAsync(customer.Id); // Reuse get method to return full DTO
+        //}
 
-        public async Task<bool> UpdateCustomerAsync(string id, CreateCustomerDto createCustomerDto)
-        {
-            var customer = await _customerRepository.GetByIdWithContactAsync(id);
-            if (customer == null) return false;
+        //public async Task<bool> UpdateCustomerAsync(string id, CreateCustomerDto createCustomerDto)
+        //{
+        //    var customer = await _customerRepository.GetByIdWithContactAsync(id);
+        //    if (customer == null) return false;
 
-            // Update the properties of the nested object
-            customer.ContactInfo.FirstName = createCustomerDto.ContactInfo.FirstName;
-            customer.ContactInfo.LastName = createCustomerDto.ContactInfo.LastName;
-            customer.ContactInfo.Email = createCustomerDto.ContactInfo.Email;
-            customer.ContactInfo.Phone = createCustomerDto.ContactInfo.Phone;
-            customer.ContactInfo.City = createCustomerDto.ContactInfo.City;
+        //    // Update the properties of the nested object
+        //    customer.ContactInfo.FirstName = createCustomerDto.ContactInfo.FirstName;
+        //    customer.ContactInfo.LastName = createCustomerDto.ContactInfo.LastName;
+        //    customer.ContactInfo.Email = createCustomerDto.ContactInfo.Email;
+        //    customer.ContactInfo.Phone = createCustomerDto.ContactInfo.Phone;
+        //    customer.ContactInfo.City = createCustomerDto.ContactInfo.City;
 
-            _customerRepository.Update(customer);
-            await _customerRepository.SaveChangesAsync();
-            return true;
-        }
+        //    _customerRepository.Update(customer);
+        //    await _customerRepository.SaveChangesAsync();
+        //    return true;
+        //}
 
         public async Task<bool> DeleteCustomerAsync(string id)
         {

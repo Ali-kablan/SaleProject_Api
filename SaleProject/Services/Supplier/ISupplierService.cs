@@ -8,10 +8,10 @@ namespace SaleProject.Services.Supplier
 {
     public interface ISupplierService
     {
-        Task<IEnumerable<SupplierDto>> GetAllSuppliersAsync();
-        Task<SupplierDto> GetSupplierByIdAsync(string id);
-        Task<SupplierDto> CreateSupplierAsync(CreateSupplierDto createSupplierDto);
-        Task<bool> UpdateSupplierAsync(string id, CreateSupplierDto createSupplierDto);
+      //  Task<IEnumerable<SupplierDto>> GetAllSuppliersAsync();
+        //Task<SupplierDto> GetSupplierByIdAsync(string id);
+        //Task<SupplierDto> CreateSupplierAsync(CreateSupplierDto createSupplierDto);
+        //Task<bool> UpdateSupplierAsync(string id, CreateSupplierDto createSupplierDto);
         Task<bool> DeleteSupplierAsync(string id);
     }
 }

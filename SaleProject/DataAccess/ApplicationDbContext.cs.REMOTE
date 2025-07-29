@@ -17,9 +17,9 @@ namespace SaleProject.DataAccess
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<SaleInvoice> SaleInvoices { get; set; }
-        public DbSet<SaleInvoiceProducts> SaleInvoiceProductss { get; set; }
+        public DbSet<SaleInvoiceProducts> SaleInvoiceProduct { get; set; }
         public DbSet<PurchaseInvoice> PurchaseInvoices { get; set; }
-        public DbSet<PurchaseInvoiceProducts> PurchaseInvoiceProductss { get; set; }
+        public DbSet<PurchaseInvoiceProducts> PurchaseInvoiceProduct { get; set; }
         public DbSet<StoreStock> StoreStocks { get; set; }
 
 

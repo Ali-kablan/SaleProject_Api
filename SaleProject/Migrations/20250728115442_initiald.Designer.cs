@@ -145,7 +145,7 @@ namespace SaleProject.Migrations
 
                     b.HasIndex("PurchaseInvoiceId");
 
-                    b.ToTable("PurchaseInvoiceProductss");
+                    b.ToTable("PurchaseInvoiceProduct");
                 });
 
             modelBuilder.Entity("SaleProject.Entities.SaleInvoice", b =>
@@ -206,7 +206,7 @@ namespace SaleProject.Migrations
 
                     b.HasIndex("SaleInvoiceId");
 
-                    b.ToTable("SaleInvoiceProductss");
+                    b.ToTable("SaleInvoiceProduct");
                 });
 
             modelBuilder.Entity("SaleProject.Entities.Store", b =>
@@ -319,7 +319,7 @@ namespace SaleProject.Migrations
             modelBuilder.Entity("SaleProject.Entities.PurchaseInvoice", b =>
                 {
                     b.HasOne("SaleProject.Entities.Supplier", "Supplier")
-                        .WithMany("BuyInvoices")
+                        .WithMany("PurchaseInvoice")
                         .HasForeignKey("SupplierId1");
 
                     b.Navigation("Supplier");
@@ -328,13 +328,13 @@ namespace SaleProject.Migrations
             modelBuilder.Entity("SaleProject.Entities.PurchaseInvoiceProducts", b =>
                 {
                     b.HasOne("SaleProject.Entities.Product", "Product")
-                        .WithMany("PurchaseInvoiceProductss")
+                        .WithMany("PurchaseInvoiceProduct")
                         .HasForeignKey("ProductId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SaleProject.Entities.PurchaseInvoice", "PurchaseInvoice")
-                        .WithMany("PurchaseInvoiceProductss")
+                        .WithMany("PurchaseInvoiceProduct")
                         .HasForeignKey("PurchaseInvoiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -358,13 +358,13 @@ namespace SaleProject.Migrations
             modelBuilder.Entity("SaleProject.Entities.SaleInvoiceProducts", b =>
                 {
                     b.HasOne("SaleProject.Entities.Product", "Product")
-                        .WithMany("SaleInvoiceProductss")
+                        .WithMany("SaleInvoiceProduct")
                         .HasForeignKey("ProductId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SaleProject.Entities.SaleInvoice", "SaleInvoice")
-                        .WithMany("SaleInvoiceProductss")
+                        .WithMany("SaleInvoiceProduct")
                         .HasForeignKey("SaleInvoiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -412,21 +412,21 @@ namespace SaleProject.Migrations
 
             modelBuilder.Entity("SaleProject.Entities.Product", b =>
                 {
-                    b.Navigation("PurchaseInvoiceProductss");
+                    b.Navigation("PurchaseInvoiceProduct");
 
-                    b.Navigation("SaleInvoiceProductss");
+                    b.Navigation("SaleInvoiceProduct");
 
                     b.Navigation("StoreStocks");
                 });
 
             modelBuilder.Entity("SaleProject.Entities.PurchaseInvoice", b =>
                 {
-                    b.Navigation("PurchaseInvoiceProductss");
+                    b.Navigation("PurchaseInvoiceProduct");
                 });
 
             modelBuilder.Entity("SaleProject.Entities.SaleInvoice", b =>
                 {
-                    b.Navigation("SaleInvoiceProductss");
+                    b.Navigation("SaleInvoiceProduct");
                 });
 
             modelBuilder.Entity("SaleProject.Entities.Store", b =>
@@ -436,7 +436,7 @@ namespace SaleProject.Migrations
 
             modelBuilder.Entity("SaleProject.Entities.Supplier", b =>
                 {
-                    b.Navigation("BuyInvoices");
+                    b.Navigation("PurchaseInvoice");
 
                     b.Navigation("ContactInfo")
                         .IsRequired();

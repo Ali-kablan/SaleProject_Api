@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SaleProject.Entities
 {
@@ -8,6 +9,7 @@ namespace SaleProject.Entities
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Phone { get; set; }
+        [EmailAddress]
         public string? Email { get; set; }
         public string? City { get; set; }
 

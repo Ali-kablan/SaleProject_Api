@@ -14,6 +14,6 @@
         public Customer Customer { get; set; } // Navigation property to the single customer
 
         // Navigation property to the details of this invoice
-        public ICollection<SaleInvoiceProducts> SaleInvoiceProductss { get; set; }
+        public ICollection<SaleInvoiceProducts> SaleInvoiceProduct { get; set; }
     }
 }

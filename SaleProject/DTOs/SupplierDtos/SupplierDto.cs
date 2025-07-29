@@ -5,6 +5,6 @@ namespace SaleProject.DTOs.SupplierDtos
     public class SupplierDto
     {
         public string Id { get; set; }
-        public SupplierContactInfoDto ContactInfo { get; set; }
+        public ICollection<SupplierContactInfoDto> ContactInfo { get; set; } = [];
     }
 }

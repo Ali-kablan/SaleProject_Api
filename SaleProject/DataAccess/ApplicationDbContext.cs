@@ -17,9 +17,9 @@ namespace SaleProject.DataAccess
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<SaleInvoice> SaleInvoices { get; set; }
-        public DbSet<SaleInvoiceProducts> SaleInvoiceProductss { get; set; }
+        public DbSet<SaleInvoiceProducts> SaleInvoiceProduct { get; set; }
         public DbSet<PurchaseInvoice> PurchaseInvoices { get; set; }
-        public DbSet<PurchaseInvoiceProducts> PurchaseInvoiceProductss { get; set; }
+        public DbSet<PurchaseInvoiceProducts> PurchaseInvoiceProduct { get; set; }
         public DbSet<StoreStock> StoreStocks { get; set; }
         // --- Add the new DbSets ---
         public DbSet<CustomerContactInfo> CustomerContactInfos { get; set; }
@@ -34,14 +34,14 @@ namespace SaleProject.DataAccess
 
             // this represent the one to one relationship between Supplier and  SupplierContactInfo
             modelBuilder.Entity<Customer>()
-           .HasOne(c => c.ContactInfo)
+           .HasMany(c => c.ContactInfo)
            .WithOne(ci => ci.Customer)
-            .HasForeignKey<CustomerContactInfo>(ci => ci.CustomerId);
+            .HasForeignKey(ci => ci.CustomerId);
 
             modelBuilder.Entity<Supplier>()
-            .HasOne(s => s.ContactInfo)
+            .HasMany(s => s.ContactInfo)
             .WithOne(si => si.Supplier)
-             .HasForeignKey<SupplierContactInfo>(si => si.SupplierId);
+             .HasForeignKey(si => si.SupplierId);
 
             // Here we configure the "many-to-many" join tables by defining their composite primary keys.
             // This tells EF Core that the primary key of StoreStock is the combination of StoreId and ProductId.
