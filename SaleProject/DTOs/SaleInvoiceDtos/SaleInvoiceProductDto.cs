@@ -1,10 +1,12 @@
-﻿namespace SaleProject.DTOs.Sale_Invoice_DTOs
+﻿using SaleProject.DTOs.ProductDtos;
+
+namespace SaleProject.DTOs.SaleInvoiceDtos
 {
     public class SaleInvoiceProductDto
     {
-        public int ProductId { get; set; }
+        public string ProductId { get; set; }
+        public ProductDto Product { get; set; }
         public int Quantity { get; set; }
-        // Note: UnitPrice could be optional here if you always want to use the current price from the Product table
+        public decimal UnitPrice { get; set; }
     }
-
 }

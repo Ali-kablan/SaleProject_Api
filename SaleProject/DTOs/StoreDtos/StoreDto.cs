@@ -1,9 +1,11 @@
-﻿namespace SaleProject.DTOs.Store_DTOs
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SaleProject.DTOs.StoreDtos
 {
-    public class StoreDto
+    public class StoreDto : BaseDtos
     {
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
     }

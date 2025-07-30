@@ -1,13 +1,13 @@
 ﻿// In Repositories/GenericRepository.cs
 using Microsoft.EntityFrameworkCore;
 using SaleProject.DataAccess;
+using SaleProject.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-
 namespace SaleProject.Repository
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         protected readonly ApplicationDbContext _context;
         private readonly DbSet<T> _dbSet;
@@ -21,6 +21,11 @@ namespace SaleProject.Repository
         public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllIncludingDeletedAsync()
+        {
+            return await _dbSet.IgnoreQueryFilters().ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(string id)
@@ -41,6 +46,13 @@ namespace SaleProject.Repository
         public void Delete(T entity)
         {
             _dbSet.Remove(entity);
+        }
+
+        public void SoftDelete(T entity)
+        {
+            entity.IsDeleted = true;
+            entity.DeletedAt = DateTime.UtcNow;
+            _dbSet.Update(entity);
         }
 
         public async Task<int> SaveChangesAsync()

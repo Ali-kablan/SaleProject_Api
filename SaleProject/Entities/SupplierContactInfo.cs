@@ -1,8 +1,7 @@
 ﻿namespace SaleProject.Entities
 {
-    public class SupplierContactInfo
+    public class SupplierContactInfo : BaseEntity
     {
-        public string Id { get; set; } = Guid.CreateVersion7().ToString();
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Phone { get; set; }

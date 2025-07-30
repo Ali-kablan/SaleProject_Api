@@ -1,6 +1,5 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
-using SaleProject.DTOs.Supplier_DTOs;
 using SaleProject.DTOs.SupplierDtos;
 using SaleProject.Services.Supplier;
 using System.Collections.Generic;

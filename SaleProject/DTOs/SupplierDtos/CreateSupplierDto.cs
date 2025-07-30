@@ -1,9 +1,11 @@
-﻿using SaleProject.DTOs.CustomerDtos;
+﻿using SaleProject.DTOs.SupplierDtos;
 
-namespace SaleProject.DTOs.Supplier_DTOs
+namespace SaleProject.DTOs.SupplierDtos
 {
     public class CreateSupplierDto
     {
-        public CustomerContactInfoDto ContactInfo { get; set; }
+        public string? Name { get; set; }
+        public string? Note { get; set; }
+        public SupplierContactInfoDto ContactInfo { get; set; } = new SupplierContactInfoDto();
     }
 }

@@ -1,10 +1,9 @@
 ﻿namespace SaleProject.Entities
 {
-    public class Product
+    public class Product : BaseEntity
     {
-        public string Id { get; set; }  = Guid.CreateVersion7().ToString();
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string? Name { get; set; } 
+        public string? Unit { get; set; } // that is simple way to  detect the product unit 
         public decimal SalePrice { get; set; } // Price you sell at
         public decimal BuyPrice { get; set; }  // Price you buy at
 

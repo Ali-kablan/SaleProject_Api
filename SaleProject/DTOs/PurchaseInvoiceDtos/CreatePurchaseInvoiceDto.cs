@@ -1,9 +1,11 @@
-﻿namespace SaleProject.DTOs.Invoice_DTOs
+﻿using SaleProject.DTOs.Invoice_DTOs;
+
+namespace SaleProject.DTOs.PurchaseInvoiceDtos
 {
     public class CreatePurchaseInvoiceDto
     {
-        public int SupplierId { get; set; }
         public DateTime InvoiceDate { get; set; }
-        public ICollection<PurchaseInvoiceProductDto> Products { get; set; }
+        public string SupplierId { get; set; }
+        public ICollection<PurchaseInvoiceProductDto> Products { get; set; } = [];
     }
 }

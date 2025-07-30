@@ -26,7 +26,7 @@ namespace SaleProject.Services.Product
                 {
                     Id = product.Id,
                     Name = product.Name,
-                    Description = product.Description,
+                    Description = product.Unit,
                     SalePrice = product.SalePrice
                 });
             }
@@ -42,7 +42,7 @@ namespace SaleProject.Services.Product
             {
                 Id = product.Id,
                 Name = product.Name,
-                Description = product.Description,
+                Description = product.Unit,
                 SalePrice = product.SalePrice
             };
         }
@@ -53,7 +53,7 @@ namespace SaleProject.Services.Product
             var product = new SaleProject.Entities.Product
             {
                 Name = createProductDto.Name,
-                Description = createProductDto.Description,
+                Unit = createProductDto.Unit,
                 SalePrice = createProductDto.SalePrice,
                 BuyPrice = createProductDto.BuyPrice
             };
@@ -66,7 +66,7 @@ namespace SaleProject.Services.Product
             {
                 Id = product.Id,
                 Name = product.Name,
-                Description = product.Description,
+                Description = product.Unit,
                 SalePrice = product.SalePrice
             };
         }
@@ -78,7 +78,7 @@ namespace SaleProject.Services.Product
 
             // Update properties
             product.Name = createProductDto.Name;
-            product.Description = createProductDto.Description;
+            product.Unit = createProductDto.Unit;
             product.SalePrice = createProductDto.SalePrice;
             product.BuyPrice = createProductDto.BuyPrice;
 

@@ -1,4 +1,4 @@
-﻿using SaleProject.DTOs.Supplier_DTOs;
+﻿
 using SaleProject.DTOs.SupplierDtos;
 using SaleProject.Entities;
 using SaleProject.Repository;

@@ -1,9 +1,12 @@
-﻿namespace SaleProject.DTOs.Invoice_DTOs
+﻿using SaleProject.DTOs.ProductDtos;
+
+namespace SaleProject.DTOs.Invoice_DTOs
 {
     public class PurchaseInvoiceProductDto
     {
 
-        public int ProductId { get; set; }
+        public string ProductId { get; set; }
+        public ProductDto Product { get; set; }
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
     }
