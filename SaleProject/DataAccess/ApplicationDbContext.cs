@@ -29,46 +29,23 @@ namespace SaleProject.DataAccess
         public DbSet<SupplierContactInfo> SupplierContactInfos { get; set; }
 
 
-        private void ApplyAuditInfo()
-        {
-            var now = DateTime.UtcNow;
-            var user = CurrentUsername ?? "System";
-
-            foreach (var entry in ChangeTracker.Entries<BaseEntity>())
-            {
-                switch (entry.State)
-                {
-                    case EntityState.Added:
-                        entry.Entity.CreatedAt = now;
-                        entry.Entity.CreatedBy = user;
-                        break;
-                    case EntityState.Modified:
-                        entry.Entity.UpdatedAt = now;
-                        entry.Entity.UpdatedBy = user;
-                        break;
-                    case EntityState.Deleted:
-                        entry.State = EntityState.Modified;
-                        entry.Entity.IsDeleted = true;
-                        entry.Entity.DeletedAt = now;
-                        entry.Entity.UpdatedBy = user;
-                        break;
-                }
-            }
-        }
+        
 
 
 
-        public override int SaveChanges()
-        {
-            ApplyAuditInfo(); // Apply audit information before saving changes
-            return base.SaveChanges();
-        }
+        //public override int SaveChanges()
+        //{
+         
+        //    return base.SaveChanges();
+        //}
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            ApplyAuditInfo(); // Apply audit information before saving changes
-            return await base.SaveChangesAsync(cancellationToken);
-        }
+
+         // cancellationToken advince topic shuld be understanded soon as we can 
+         //public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        //{
+
+        //    return await base.SaveChangesAsync(cancellationToken);
+        //}
 
 
 

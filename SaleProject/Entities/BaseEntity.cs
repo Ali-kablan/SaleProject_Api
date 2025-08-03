@@ -15,7 +15,9 @@ namespace SaleProject.Entities
 
         public DateTime? DeletedAt { get; set; }
 
-        public string? CreatedBy { get; set; }
+        public string CreatedById { get; set; }
+        //nvagiton to User entity is not defined in the provided code, assuming it exists in the project.
+        public User CreatedBy { get; set; }
 
         public string? UpdatedBy { get; set; }
     }

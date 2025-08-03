@@ -2,8 +2,8 @@
 {
     public class Customer : BaseEntity
     {
-        public string? Name { get; set; }
-        public string? Note { get; set; }
+        public string Name { get; set; }
+        public string? Note { get; set; } = string.Empty;
        
         public virtual ICollection<CustomerContactInfo> ContactInfo { get; set; } = [];
         public virtual ICollection<SaleInvoice> SaleInvoices { get; set; } = [];

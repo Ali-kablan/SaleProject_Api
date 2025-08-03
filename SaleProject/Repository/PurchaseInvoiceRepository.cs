@@ -20,7 +20,7 @@ namespace SaleProject.Repository
                 .FirstOrDefaultAsync(pi => pi.Id == id);
         }
 
-        public async Task<IEnumerable<PurchaseInvoice?>> GetAllWithDetailsAsync()
+        public async Task<IEnumerable<PurchaseInvoice>> GetAllWithDetailsAsync()
         {
             return await _context.PurchaseInvoices
                 .Include(pi => pi.Supplier)
@@ -30,7 +30,7 @@ namespace SaleProject.Repository
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<PurchaseInvoice?>> GetBySupplierIdAsync(string supplierId)
+        public async Task<IEnumerable<PurchaseInvoice>> GetBySupplierIdAsync(string supplierId)
         {
             return await _context.PurchaseInvoices
                 .Include(pi => pi.PurchaseInvoiceProduct)

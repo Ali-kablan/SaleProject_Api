@@ -2,7 +2,7 @@
 {
     public class Product : BaseEntity
     {
-        public string? Name { get; set; } 
+        public string Name { get; set; } 
         public string? Unit { get; set; } // that is simple way to  detect the product unit 
         public decimal SalePrice { get; set; } // Price you sell at
         public decimal BuyPrice { get; set; }  // Price you buy at

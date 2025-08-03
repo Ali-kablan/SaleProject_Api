@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace SaleProject.Repository
 {
+   // public interface IGenericRepository<T> where T : class  // why change from class to BaseEntity? 
     public interface IGenericRepository<T> where T : BaseEntity  // why change from class to BaseEntity? 
     {
         Task<T> GetByIdAsync(string id);

@@ -20,7 +20,7 @@ namespace SaleProject.Repository
                 .FirstOrDefaultAsync(si => si.Id == id);
         }
 
-        public async Task<IEnumerable<SaleInvoice?>> GetAllWithDetailsAsync()
+        public async Task<IEnumerable<SaleInvoice>> GetAllWithDetailsAsync()
         {
             return await _context.SaleInvoices
                 .Include(si => si.Customer)
@@ -30,11 +30,11 @@ namespace SaleProject.Repository
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<SaleInvoice?>> GetByCustomerIdAsync(string customerId)
-        {
+        public async Task<IEnumerable<SaleInvoice>> GetByCustomerIdAsync(string customerId)
+        {   
             return await _context.SaleInvoices
                 .Include(si => si.SaleInvoiceProduct)
-                    .ThenInclude(sip => sip.Product)
+                    .ThenInclude(sip => sip.Product)    
                 .Where(si => si.CustomerId == customerId)
                 .ToListAsync();
         }

@@ -4,11 +4,11 @@
 
     public class Supplier : BaseEntity
     {
-        public string? Name { get; set; }
-        public string? Note { get; set; }
+        public string Name { get; set; }
+        public string? Note { get; set; } = string.Empty;
         // Navigation property to its dedicated contact info
         public virtual ICollection<SupplierContactInfo> ContactInfo { get; set; } = [];
 
-        public virtual ICollection<PurchaseInvoice> PurchaseInvoice { get; set; } = [];
+        public virtual ICollection<PurchaseInvoice> PurchaseInvoices { get; set; } = [];
     }
 }
