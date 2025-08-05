@@ -1,13 +1,11 @@
 ﻿namespace SaleProject.Entities
 {
-    public class Customer
+    public class Customer : BaseEntity
     {
-        public string Id { get; set; }  = Guid.CreateVersion7().ToString();
-        public string? Name { get; set; }
-        public string? Address { get; set; }
-        public string? Phone { get; set; }
-
-        // Navigation Property: A Customer can have many SaleInvoices
-        public ICollection<SaleInvoice> SaleInvoices { get; set; }
+        public string Name { get; set; }
+        public string? Note { get; set; } = string.Empty;
+       
+        public virtual ICollection<CustomerContactInfo> ContactInfo { get; set; } = [];
+        public virtual ICollection<SaleInvoice> SaleInvoices { get; set; } = [];
     }
 }

@@ -2,11 +2,10 @@
 
 namespace SaleProject.Entities
 {
-    public class User
+    public class User :BaseEntity
     {
-        [Required]
-        public string Id { get; set; }  =  Guid.CreateVersion7().ToString();
-        public string? Username { get; set; }
-        public string? PasswordHash { get; set; } // Never store plain text passwords!
+       
+        public required string Username { get; set; }
+        public required string PasswordHash { get; set; } // Never store plain text passwords!
     }
 }

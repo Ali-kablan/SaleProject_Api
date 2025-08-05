@@ -2,14 +2,13 @@
 {
     using System.Collections.Generic;
 
-    public class Supplier
+    public class Supplier : BaseEntity
     {
-        public string Id { get; set; } = Guid.CreateVersion7().ToString();
-        public string? Name { get; set; }
-        public string? ContactPerson { get; set; }
-        public string? Email { get; set; }
+        public string Name { get; set; }
+        public string? Note { get; set; } = string.Empty;
+        // Navigation property to its dedicated contact info
+        public virtual ICollection<SupplierContactInfo> ContactInfo { get; set; } = [];
 
-        // Navigation Property: A Supplier can have many BuyInvoices
-        public required virtual ICollection<BuyInvoice> BuyInvoices { get; set; }
+        public virtual ICollection<PurchaseInvoice> PurchaseInvoices { get; set; } = [];
     }
 }
