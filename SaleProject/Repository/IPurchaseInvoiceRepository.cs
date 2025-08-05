@@ -6,8 +6,8 @@ namespace SaleProject.Repository
     {
         // Method to get a purchase invoice with supplier and products
         Task<PurchaseInvoice?> GetByIdWithDetailsAsync(string id);
-        Task<IEnumerable<PurchaseInvoice?>> GetAllWithDetailsAsync();
+        Task<IEnumerable<PurchaseInvoice>> GetAllWithDetailsAsync();
         // Method to get invoices by supplier
-        Task<IEnumerable<PurchaseInvoice?>> GetBySupplierIdAsync(string supplierId);
+        Task<IEnumerable<PurchaseInvoice>> GetBySupplierIdAsync(string supplierId);
     }
 }

@@ -6,8 +6,8 @@ namespace SaleProject.Repository
     {
         // Method to get a sale invoice with customer and products
         Task<SaleInvoice?> GetByIdWithDetailsAsync(string id);
-        Task<IEnumerable<SaleInvoice?>> GetAllWithDetailsAsync();
+        Task<IEnumerable<SaleInvoice>> GetAllWithDetailsAsync();
         // Method to get invoices by customer
-        Task<IEnumerable<SaleInvoice?>> GetByCustomerIdAsync(string customerId);
+        Task<IEnumerable<SaleInvoice>> GetByCustomerIdAsync(string customerId);
     }
 }

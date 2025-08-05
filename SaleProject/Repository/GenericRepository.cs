@@ -64,32 +64,7 @@ namespace SaleProject.Repository
         }
 
 
-        private void ApplyAuditInfo( string userID)
-        {
-            var now = DateTime.UtcNow;
-           
-
-            foreach (var entry in ChangeTracker.Entries<BaseEntity>())
-            {
-                switch (entry.State)
-                {
-                    case EntityState.Added:
-                        entry.Entity.CreatedAt = now;
-                        entry.Entity.CreatedBy = user;
-                        break;
-                    case EntityState.Modified:
-                        entry.Entity.UpdatedAt = now;
-                        entry.Entity.UpdatedBy = user;
-                        break;
-                    case EntityState.Deleted:
-                        entry.State = EntityState.Modified;
-                        entry.Entity.IsDeleted = true;
-                        entry.Entity.DeletedAt = now;
-                        entry.Entity.UpdatedBy = user;
-                        break;
-                }
-            }
-        }
+ 
 
         // if i user 
 

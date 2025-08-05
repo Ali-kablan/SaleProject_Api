@@ -11,10 +11,11 @@ namespace SaleProject.Repository
         Task<IEnumerable<T>> GetAllAsync();
         Task<IEnumerable<T>> GetAllIncludingDeletedAsync();
         Task AddAsync(T entity);
-        void Update(T entity);
-        void Delete(T entity);
-        void SoftDelete(T entity);
+        Task Update(T entity);
+        Task Delete(T entity);
+        Task SoftDelete(T entity);
         Task<int> SaveChangesAsync();
+
     }
 }
 
